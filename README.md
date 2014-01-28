@@ -13,17 +13,6 @@ An extensive example can be found in `example/app.js`, the following one just ac
 
 
 ```js
-var window = Ti.UI.createWindow({
-	// How much space must be took on top of the keyboard
-	keyboardTriggerOffset: 0,
-	// This activates the panning feature
-	keyboardPanning: true
-});
-
-window.addEventListener('close', function (event) {
-	// Very important! Releases what needs to be released
-	event.source.keyboardPanning = false;
-});
 
 var textarea = Ti.UI.createTextArea({
 	right: 0,
@@ -34,11 +23,25 @@ var textarea = Ti.UI.createTextArea({
 	height: Ti.UI.SIZE,
 });
 
+var window = Ti.UI.createWindow({
+	// How much space must be took on top of the keyboard
+	keyboardTriggerOffset: 0,
+	// This activates the panning feature
+	keyboardPanning: true,
+	// Automatically add the textarea as a locked view
+	lockedViews: [ textarea ]
+});
+
+window.addEventListener('close', function (event) {
+	// Very important! Releases what needs to be released
+	event.source.keyboardPanning = false;
+});
+
 window.add(textarea);
 
 // The window is now the host for keyboard events
 window.addEventListener('keyboardchange', function (event) {
-	textarea.bottom = event.height ? (window.rect.height - event.y) : 0;
+	Ti.API.error("Notification of keyboard change: y=" + event.y + " height="+event.height);
 });
 
 // Multiline text-area
