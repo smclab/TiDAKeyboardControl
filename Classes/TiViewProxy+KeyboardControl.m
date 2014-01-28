@@ -18,6 +18,7 @@
 
 #import "TiBase.h"
 #import "TiComplexValue.h"
+#import "Ti2DMatrix.h"
 #import "TiViewProxy.h"
 #import "TiViewProxy+KeyboardControl.h"
 #import "DAKeyboardControl.h"
@@ -27,10 +28,13 @@
 
 
 DEFINE_DEF_BOOL_PROP(keyboardPanning, NO);
+DEFINE_DEF_PROP(lockedViews, nil);
 
 
 - (void)setKeyboardPanning:(id)args
 {
+    ENSURE_UI_THREAD(setKeyboardPanning, args);
+
     BOOL oldValue = [self keyboardPanning];
     BOOL newValue = [TiUtils boolValue:args def:NO];
 
@@ -41,35 +45,99 @@ DEFINE_DEF_BOOL_PROP(keyboardPanning, NO);
 
     if (newValue)
     {
-        [self.view addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView) {
-
-            NSNumber * keyboardWidth = [NSNumber numberWithFloat:keyboardFrameInView.size.width];
-            NSNumber * keyboardHeight = [NSNumber numberWithFloat:keyboardFrameInView.size.height];
-            NSNumber * keyboardX = [NSNumber numberWithFloat:keyboardFrameInView.origin.x];
-            NSNumber * keyboardY = [NSNumber numberWithFloat:keyboardFrameInView.origin.y];
-
-            NSMutableDictionary * event = [NSMutableDictionary dictionary];
-
-            [event setValue:keyboardHeight
-                     forKey:@"height"];
-
-            [event setValue:keyboardWidth
-                     forKey:@"width"];
-
-            [event setValue:keyboardX
-                     forKey:@"x"];
-
-            [event setValue:keyboardY
-                     forKey:@"y"];
-
-            [self fireEvent:@"keyboardchange" withObject:event];
-        }];
+        [self setupKeyboardPanning];
     }
     else
     {
-        [self.view removeKeyboardControl];
+        [self teardownKeyboardPanning];
     }
 }
+
+
+- (void)setupKeyboardPanning
+{
+    [self.view addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView) {
+        [self updateKeyboardPanningLockedViews:keyboardFrameInView];
+        [self fireEventForKeyboardFrameInView:keyboardFrameInView];
+    }];
+}
+
+
+- (void)teardownKeyboardPanning
+{
+    [self.view removeKeyboardControl];
+}
+
+
+- (void)fireEventForKeyboardFrameInView:(CGRect)keyboardFrameInView
+{
+    if (![self _hasListeners:@"keyboardchange"]) {
+        return;
+    }
+
+    NSNumber * keyboardWidth = [NSNumber numberWithFloat:keyboardFrameInView.size.width];
+    NSNumber * keyboardHeight = [NSNumber numberWithFloat:keyboardFrameInView.size.height];
+    NSNumber * keyboardX = [NSNumber numberWithFloat:keyboardFrameInView.origin.x];
+    NSNumber * keyboardY = [NSNumber numberWithFloat:keyboardFrameInView.origin.y];
+
+    NSMutableDictionary * event = [NSMutableDictionary dictionary];
+
+    [event setValue:keyboardHeight
+             forKey:@"height"];
+
+    [event setValue:keyboardWidth
+             forKey:@"width"];
+
+    [event setValue:keyboardX
+             forKey:@"x"];
+
+    [event setValue:keyboardY
+             forKey:@"y"];
+
+    [self fireEvent:@"keyboardchange" withObject:event];
+}
+
+
+- (void)updateKeyboardPanningLockedViews:(CGRect)keyboardFrameInView
+{
+    ENSURE_UI_THREAD(updateKeyboardPanningLockedViews, keyboardFrameInView);
+
+    NSArray * lockedViews = [self lockedViews];
+
+    ENSURE_TYPE_OR_NIL(lockedViews, NSArray);
+
+    if (lockedViews == nil || [lockedViews count] == 0)
+    {
+        return;
+    }
+
+    float keyboardHeight = keyboardFrameInView.size.height;
+    float keyboardY = keyboardFrameInView.origin.y;
+    float height = self.view.frame.size.height;
+
+    float shift = keyboardHeight <= 0 ? 0 : (height - keyboardY);
+
+    for (TiViewProxy * proxy in lockedViews) {
+        if (proxy != nil)
+        {
+            [self updateKeyboardPanningLockedView:proxy with:shift];
+        }
+    }
+}
+
+
+- (void)updateKeyboardPanningLockedView:(TiViewProxy *)proxy with:(float)shift
+{
+    TiUIView * proxyView = [proxy view];
+
+    CGAffineTransform transform = CGAffineTransformMakeTranslation(0.0f, -shift);
+
+    Ti2DMatrix * matrix = [[Ti2DMatrix alloc] initWithMatrix:transform];
+
+    [proxy replaceValue:matrix forKey:@"transform" notification:YES];
+    [proxyView setTransform_:matrix];
+}
+
 
 - (void)setKeyboardTriggerOffset:(id)args
 {
