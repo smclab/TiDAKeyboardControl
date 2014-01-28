@@ -41,12 +41,12 @@ DEFINE_DEF_BOOL_PROP(keyboardPanning, NO);
 
     if (newValue)
     {
-        [self.view addKeyboardPanningWithActionHandler:^(CGRect kayboardFrameInView) {
+        [self.view addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView) {
 
-            NSNumber * keyboardWidth = [NSNumber numberWithFloat:kayboardFrameInView.size.width];
-            NSNumber * keyboardHeight = [NSNumber numberWithFloat:kayboardFrameInView.size.height];
-            NSNumber * keyboardX = [NSNumber numberWithFloat:kayboardFrameInView.origin.x];
-            NSNumber * keyboardY = [NSNumber numberWithFloat:kayboardFrameInView.origin.y];
+            NSNumber * keyboardWidth = [NSNumber numberWithFloat:keyboardFrameInView.size.width];
+            NSNumber * keyboardHeight = [NSNumber numberWithFloat:keyboardFrameInView.size.height];
+            NSNumber * keyboardX = [NSNumber numberWithFloat:keyboardFrameInView.origin.x];
+            NSNumber * keyboardY = [NSNumber numberWithFloat:keyboardFrameInView.origin.y];
 
             NSMutableDictionary * event = [NSMutableDictionary dictionary];
 
