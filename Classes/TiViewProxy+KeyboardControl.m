@@ -55,13 +55,13 @@ DEFINE_DEF_BOOL_PROP(keyboardPanning, NO);
 
             [event setValue:keyboardWidth
                      forKey:@"width"];
-            
+
             [event setValue:keyboardX
                      forKey:@"x"];
 
             [event setValue:keyboardY
                      forKey:@"y"];
-            
+
             [self fireEvent:@"keyboardchange" withObject:event];
         }];
     }
