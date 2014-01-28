@@ -41,7 +41,7 @@ var submit = Ti.UI.createButton({
 var textareaview = Ti.UI.createView({
 	height: Ti.UI.SIZE,
 	right: 0,
-	bottom: 0,
+	bottom: 0, // This value will not be updated!
 	left: 0,
 	backgroundColor: '#eee'
 });
@@ -51,32 +51,16 @@ textareaview.add(submit);
 
 window.add(textareaview);
 
-var last = 0;
+// Automatically add the textarea as a locked view
+window.lockedViews = [ textarea ];
 
-window.addEventListener('keyboardchange', function (event) {
-
-	var next = event.height ? (window.rect.height - event.y) : 0;
-	var delta = Math.abs(next - last);
-	var transform = Ti.UI.create2DMatrix().translate(0, -next);
-
-	if (delta > 40) {
-		textareaview.animate({
-			curve: 7,
-			duration: 300,
-			transform: transform
-		});
-	}
-	else if (delta > 0) {
-		textareaview.transform = transform;
-	}
-
-	last = next;
-});
-
+// The textarea will change in size, because it’s multi-line.
+// I need to update the correct offset for the panning.
 textareaview.addEventListener('postlayout', function (event) {
 	window.keyboardTriggerOffset = event.source.rect.height;
 });
 
+// Just an example programmatic dismissal.
 submit.addEventListener('click', function () {
 	textarea.value = '';
 	textarea.blur();

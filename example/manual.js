@@ -61,7 +61,7 @@ window.addEventListener('keyboardchange', function (event) {
 
 	if (delta > 40) {
 		textareaview.animate({
-			curve: 7,
+			curve: 7, // Undocumented (by Apple) iOS7 animation curve
 			duration: 300,
 			transform: transform
 		});
@@ -73,10 +73,13 @@ window.addEventListener('keyboardchange', function (event) {
 	last = next;
 });
 
+// The textarea will change in size, because it’s multi-line.
+// I need to update the correct offset for the panning.
 textareaview.addEventListener('postlayout', function (event) {
 	window.keyboardTriggerOffset = event.source.rect.height;
 });
 
+// Just an example programmatic dismissal.
 submit.addEventListener('click', function () {
 	textarea.value = '';
 	textarea.blur();
