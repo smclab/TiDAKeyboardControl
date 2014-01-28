@@ -1,0 +1,18 @@
+#
+# this is your module manifest and used by Titanium
+# during compilation, packaging, distribution, etc.
+#
+version: 0.1.0
+apiversion: 2
+description: TiDAKeyboardControl offers some advanced behaviour for the keyboard in Titanium SDK, kudos to @danielamitay
+author: Pier Paolo Ramon
+license: LGPL2.1
+copyright: Copyright (c) 2014 SMC Treviso s.r.l.
+
+
+# these should not be edited
+name: TiDAKeyboardControl
+moduleid: it.smc.dakeyboardcontrol
+guid: 1d7767b0-9492-466b-ac7d-7a0d593eec42
+platform: iphone
+minsdk: 3.2.0.GA
