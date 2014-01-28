@@ -1,2 +1,2 @@
 #!/bin/bash
-./build.py && rm -rf ~/Library/Application\ Support/Titanium/modules/iphone/it.smc.dakeyboardcontrol && unzip it.smc.dakeyboardcontrol-iphone-0.1.0.zip -d ~/Library/Application\ Support/Titanium/
+./build.py && rm -rf ~/Library/Application\ Support/Titanium/modules/iphone/it.smc.dakeyboardcontrol && unzip it.smc.dakeyboardcontrol-iphone-0.2.0.zip -d ~/Library/Application\ Support/Titanium/
