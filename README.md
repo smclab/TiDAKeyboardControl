@@ -1,6 +1,11 @@
 TiDAKeyboardControl
 ==========
 
+### [Download][rls] [Example][exm]
+
+[rls]: https://github.com/smclab/TiDAKeyboardControl/releases
+[exm]: https://github.com/smclab/TiDAKeyboardControl/tree/master/example
+
 Do you want to create a perfect clone of the iMessage compose interface? ***Fear no more!*** You can now respond to keyboard events (show, hide and interactive changes) and customize how much space will be used as an offset during interactive panning.
 
 Titanium SDK wrapper for the awesome [DAKeyboardControl][dakc] from [@danielamitay][da]! (iOS only)
