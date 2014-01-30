@@ -27,7 +27,6 @@
 @implementation TiViewProxy (KeyboardControl)
 
 
-DEFINE_DEF_BOOL_PROP(keyboardPanning, NO);
 DEFINE_DEF_PROP(lockedViews, nil);
 
 
@@ -38,18 +37,31 @@ DEFINE_DEF_PROP(lockedViews, nil);
     BOOL oldValue = [self keyboardPanning];
     BOOL newValue = [TiUtils boolValue:args def:NO];
 
-    if (oldValue == newValue)
-    {
-        return;
-    }
+    [self replaceValue:[NSNumber numberWithBool:newValue]
+                forKey:@"keyboardPanning"
+          notification:NO];
 
-    if (newValue)
+    if (newValue && !oldValue)
     {
         [self setupKeyboardPanning];
     }
-    else
+    else if (!newValue && oldValue)
     {
         [self teardownKeyboardPanning];
+    }
+}
+
+
+- (BOOL)keyboardPanning
+{
+    id value = [self valueForUndefinedKey:@"keyboardPanning"];
+    if (value == nil || value == [NSNull null] || ![value respondsToSelector:@selector(boolValue)])
+    {
+        return NO;
+    }
+    else
+    {
+        return [value boolValue];
     }
 }
 
