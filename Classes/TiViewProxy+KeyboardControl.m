@@ -68,6 +68,10 @@ DEFINE_DEF_PROP(lockedViews, nil);
 
 - (void)setupKeyboardPanning
 {
+    [self replaceValue:self.view
+                forKey:@"keyboardPanningView"
+          notification:NO];
+
     [self.view addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView) {
         [self updateKeyboardPanningLockedViews:keyboardFrameInView];
         [self fireEventForKeyboardFrameInView:keyboardFrameInView];
@@ -77,7 +81,8 @@ DEFINE_DEF_PROP(lockedViews, nil);
 
 - (void)teardownKeyboardPanning
 {
-    [self.view removeKeyboardControl];
+    TiUIView * panningView = [self valueForKey:@"keyboardPanningView"];
+    [panningView removeKeyboardControl];
 }
 
 
