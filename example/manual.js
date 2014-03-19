@@ -1,3 +1,4 @@
+module.exports = function(){
 
 var window = Ti.UI.createWindow({
 	orientationModes: [
@@ -90,3 +91,4 @@ submit.addEventListener('click', function () {
 });
 
 window.open();
+};
