@@ -1,3 +1,4 @@
+module.exports = function () {
 
 var window = Ti.UI.createWindow({
 	orientationModes: [
@@ -52,7 +53,7 @@ textareaview.add(submit);
 window.add(textareaview);
 
 // Automatically add the textarea as a locked view
-window.lockedViews = [ textarea ];
+window.lockedViews = [ textareaview ];
 
 // The textarea will change in size, because it’s multi-line.
 // I need to update the correct offset for the panning.
@@ -71,3 +72,4 @@ submit.addEventListener('click', function () {
 });
 
 window.open();
+};
