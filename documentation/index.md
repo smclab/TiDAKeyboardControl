@@ -8,7 +8,7 @@ Titanium SDK wrapper for the awesome [DAKeyboardControl][dakc] from [@danielamit
 
 ## Accessing the TiDAKeyboardControl Module
 
-What you have to do is just install the module, anything else!
+What you have to do is just install the module, nothing more!
 
 Thanks to the native implementation using Objective-C categories to extend classes, TiDAKeyboardControl Module does not need the **require( )** method to access the module from JavaScript.
 
@@ -20,7 +20,7 @@ Thanks to the native implementation using Objective-C categories to extend class
 How much space must be took on top of the keyboard.
 
 - ``keyboardPanning``: *number*, This activates the panning feature.
-- ``lockedViews``: *[Object,...]*, Automatically add the specified Object as a locked view.
+- ``lockedViews``: *[View]*, Automatically add the specified View as a locked view.
 
 
 An extensive example can be found in `example/app.js`, the following one just acts as an overview.
