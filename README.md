@@ -1,24 +1,44 @@
-TiDAKeyboardControl
-==========
+TiDAKeyboardControl 
+===================
 
-### [Download][rls] [Example][exm]
+[![Built for Titanium SDK][ti-badge]][ti]
+[![Available through gitTio][gittio-badge]][gittio-page]
 
-[rls]: https://github.com/smclab/TiDAKeyboardControl/releases
-[exm]: https://github.com/smclab/TiDAKeyboardControl/tree/master/example
+[ti-badge]: http://www-static.appcelerator.com/badges/titanium-git-badge-sq.png
+[ti]: http://www.appcelerator.com/titanium/
+[gittio-badge]: http://gitt.io/badge.png
+[gittio-page]: http://gitt.io/component/it.smc.dakeyboardcontrol
 
-Do you want to create a perfect clone of the iMessage compose interface? ***Fear no more!*** You can now respond to keyboard events (show, hide and interactive changes) and customize how much space will be used as an offset during interactive panning.
+Do you want to create a perfect clone of the iMessage compose interface? ***Fear no more!*** You can now respond to keyboard events (show, hide, and realtime interactive changes) and customize how much space will be used as an offset during interactive panning.
 
 Titanium SDK wrapper for the awesome [DAKeyboardControl][dakc] from [@danielamitay][da]! (iOS only)
 
+### Installation
 
-Example
--------
+You can install this module using [gitTio][gittio-cli] with
 
-An extensive example can be found in `example/app.js`, the following one just acts as an overview.
+    gittio install it.smc.dakeyboardcontrol
 
+Alternatively you can [download a specific release][rls] for manual installation.
+
+[rls]: https://github.com/smclab/TiDAKeyboardControl/releases
+[gittio-cli]: http://gitt.io/cli
+
+### Example
+
+You can run the example running the following command
+
+    gittio demo it.smc.dakeyboardcontrol
+
+The source for this demo application can be found in [the `example` folder][exm].
+
+[exm]: https://github.com/smclab/TiDAKeyboardControl/tree/master/example
+
+
+Usage overview
+--------------
 
 ```js
-
 var textarea = Ti.UI.createTextArea({
 	right: 0,
 	bottom: 0,
