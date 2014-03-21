@@ -27,7 +27,7 @@
 		24DE9E1111C5FE74003F90F6 /* ItSmcDakeyboardcontrolModuleAssets.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DE9E0F11C5FE74003F90F6 /* ItSmcDakeyboardcontrolModuleAssets.h */; };
 		24DE9E1211C5FE74003F90F6 /* ItSmcDakeyboardcontrolModuleAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DE9E1011C5FE74003F90F6 /* ItSmcDakeyboardcontrolModuleAssets.m */; };
 		96C68C141897A4F7005FEC06 /* DAKeyboardControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 96C68C121897A4F7005FEC06 /* DAKeyboardControl.h */; };
-		96C68C151897A4F7005FEC06 /* DAKeyboardControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C68C131897A4F7005FEC06 /* DAKeyboardControl.m */; };
+		96C68C151897A4F7005FEC06 /* DAKeyboardControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C68C131897A4F7005FEC06 /* DAKeyboardControl.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		96C68C181897A645005FEC06 /* TiViewProxy+KeyboardControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 96C68C161897A645005FEC06 /* TiViewProxy+KeyboardControl.h */; };
 		96C68C191897A645005FEC06 /* TiViewProxy+KeyboardControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C68C171897A645005FEC06 /* TiViewProxy+KeyboardControl.m */; };
 		AA747D9F0F9514B9006C5449 /* ItSmcDakeyboardcontrol_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* ItSmcDakeyboardcontrol_Prefix.pch */; };
