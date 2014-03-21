@@ -8,15 +8,23 @@ Titanium SDK wrapper for the awesome [DAKeyboardControl][dakc] from [@danielamit
 
 ## Accessing the TiDAKeyboardControl Module
 
-To access this module from JavaScript, you would do the following:
+What you have to do is just install the module, nothing more!
 
-	var TiDAKeyboardControl = require("it.smc.dakeyboardcontrol");
-
-The TiDAKeyboardControl variable is a reference to the Module object.	
+Thanks to the native implementation using Objective-C categories to extend classes, TiDAKeyboardControl Module does not need the **require( )** method to access the module from JavaScript.
 
 
 ## Usage
+
+###Properties
+- ``keyboardTriggerOffset``: *number*, 
+How much space must be took on top of the keyboard.
+
+- ``keyboardPanning``: *number*, This activates the panning feature.
+- ``lockedViews``: *[View]*, Automatically add the specified View as a locked view.
+
+
 An extensive example can be found in `example/app.js`, the following one just acts as an overview.
+To clear up every doubts please read [this](../example/README.md).
 
 
 ```js
@@ -31,11 +39,8 @@ var textarea = Ti.UI.createTextArea({
 });
 
 var window = Ti.UI.createWindow({
-	// How much space must be took on top of the keyboard
 	keyboardTriggerOffset: 0,
-	// This activates the panning feature
 	keyboardPanning: true,
-	// Automatically add the textarea as a locked view
 	lockedViews: [ textarea ]
 });
 

@@ -10,7 +10,7 @@ In this folder you’ll find 2 different files. This is the explanation of both.
 
 This example file shows the preferred way of using this module.
 
-Instead of listening for `keyboardchange` events and move the ‘toolbar’ accordingly, we just let the module to manage it for us.
+Instead of listening to `keyboardchange` events and moving the ‘toolbar’ accordingly, we just let the module manage it for us.
 
 This happens in three steps.
 
@@ -30,4 +30,5 @@ Ti.UI.createWindow({              /* 1 */
 
 This example code uses the `"keyboardchange"` event in the host container view to update manually the `.transform` property of our ‘toolbar’.
 
-This is slower, but shows how we can do pretty whatever we want with this module.
+This kind of implementation may cause a little glitch scrolling up and down the keyboard.
+The slowness during the toolbar's repositioning is caused by a performance issue but shows how we can do pretty whatever we want with this module.
