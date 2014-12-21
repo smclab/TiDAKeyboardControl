@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>58A99BC2-FEEC-41A1-BFAA-D44D447B947A</string>
+	<key>IDESourceControlProjectName</key>
+	<string>TiDAKeyboardControl</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>9ADB17431677F397B8611AC781EA9F5D347FDD0F</key>
+		<string>github.com:smclab/TiDAKeyboardControl.git</string>
+		<key>F5750516C1B1014B205F3FCCB08DDD0226AAA141</key>
+		<string>github.com:danielamitay/DAKeyboardControl.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>TiDAKeyboardControl.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>9ADB17431677F397B8611AC781EA9F5D347FDD0F</key>
+		<string>../..</string>
+		<key>F5750516C1B1014B205F3FCCB08DDD0226AAA141</key>
+		<string>../..DAKeyboardControl/</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:smclab/TiDAKeyboardControl.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>9ADB17431677F397B8611AC781EA9F5D347FDD0F</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F5750516C1B1014B205F3FCCB08DDD0226AAA141</string>
+			<key>IDESourceControlWCCName</key>
+			<string>DAKeyboardControl</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>9ADB17431677F397B8611AC781EA9F5D347FDD0F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>TiDAKeyboardControl</string>
+		</dict>
+	</array>
+</dict>
+</plist>
